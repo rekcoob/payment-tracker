@@ -1,0 +1,11 @@
+// create-react-app
+yarn create react-app my-app --template typescript
+
+
+1.07 build
+
+TransactionItem {transaction}
+Number with spaces
+
+Proxy and long localhost strings or env.local
+Start dev server with concurrently
