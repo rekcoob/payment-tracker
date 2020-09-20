@@ -1,12 +1,13 @@
 {
 	"name": "payment-app",
 	"version": "1.0.0",
-	"description": "mern fullstack app",
-	"main": "index.js",
+	"description": "fullstack-mern-typescript",
+	"main": "app.js",
 	"scripts": {
 		"watch": "tsc -w",
-		"start": "node dist/app.js",
-		"dev": "nodemon dist/app.js"
+		"server": "nodemon dist/app.js",
+		"client": "npm start --prefix ../client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"keywords": [],
 	"author": "rekcoob",

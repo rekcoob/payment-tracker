@@ -32,7 +32,11 @@ const getTransactions = async (
 //@ desc Add Transaction
 //@ route POST/api/transactions
 //@ access Public
-const addTransaction = async (req: Request, res: Response, next: Function) => {
+const addTransaction = async (
+	req: Request,
+	res: Response,
+	next: Function
+): Promise<Response<any>> => {
 	try {
 		const { text, amount } = req.body;
 		const transaction = await Transaction.create(req.body);

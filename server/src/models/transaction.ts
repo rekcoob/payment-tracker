@@ -4,7 +4,9 @@ import { model, Schema } from 'mongoose';
 const transactionSchema: Schema = new Schema({
 	text: {
 		type: String,
+		// trim - remove whitespace from both sides
 		trim: true,
+		// 2 param - Error Message
 		required: [true, 'Please add some text'],
 	},
 	amount: {
