@@ -2,7 +2,7 @@
  * Transaction Interface
  */
 export interface ITransaction {
-	_id?: number;
+	_id: number;
 	text: string;
 	amount: number;
 }
@@ -15,5 +15,5 @@ export type InitialStateType = {
 	// getTransactions(): Promise<void>;
 	getTransactions(): any;
 	deleteTransaction: (id: number) => void;
-	addTransaction(transaction: ITransaction): void;
+	addTransaction(transaction: ITransaction | any): void;
 };

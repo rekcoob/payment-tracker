@@ -20,10 +20,12 @@ export const GlobalContext = createContext<InitialStateType>(initialState);
 export const GlobalProvider: React.FC = ({ children }) => {
 	const [state, dispatch] = useReducer(AppReducer, initialState);
 
+	// url
+	const baseUrl: string = 'http://localhost:4000';
 	// Actions
 	async function getTransactions() {
 		try {
-			const res = await axios.get('http://localhost:4000/api/transactions');
+			const res = await axios.get(baseUrl + '/api/transactions');
 			dispatch({
 				type: 'GET_TRANSACTIONS',
 				payload: res.data.data,
@@ -38,7 +40,7 @@ export const GlobalProvider: React.FC = ({ children }) => {
 
 	async function deleteTransaction(id: number) {
 		try {
-			await axios.delete(`http://localhost:4000/api/transactions/${id}`);
+			await axios.delete(`/api/transactions/${id}`);
 			dispatch({
 				type: 'DELETE_TRANSACTION',
 				payload: id,
@@ -59,11 +61,7 @@ export const GlobalProvider: React.FC = ({ children }) => {
 		};
 
 		try {
-			const res = await axios.post(
-				'http://localhost:4000/api/transactions',
-				transaction,
-				config
-			);
+			const res = await axios.post('/api/transactions', transaction, config);
 
 			dispatch({
 				type: 'ADD_TRANSACTION',

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { ITransaction } from '../types';
-import { numberWithCommas } from '../utils/format';
+import { numberWithSpaces } from '../utils/format';
 
 export const Balance: React.FC = () => {
 	const { transactions } = useContext(GlobalContext);
@@ -17,7 +17,7 @@ export const Balance: React.FC = () => {
 	return (
 		<>
 			<h4>Your Balance</h4>
-			<h1>${numberWithCommas(total)}</h1>
+			<h1>€{numberWithSpaces(total)}</h1>
 		</>
 	);
 };

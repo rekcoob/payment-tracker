@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-// import { ITransaction } from '../types';
-import { numberWithCommas } from '../utils/format';
+import { ITransaction } from '../types';
+import { numberWithSpaces } from '../utils/format';
 
-// type Props = {
-// 	transaction: ITransaction;
-// };
+type Props = {
+	transaction: ITransaction;
+};
 
-export const TransactionItem = ({ transaction }: any) => {
+export const TransactionItem: React.FC<Props> = ({ transaction }) => {
 	// const { transaction } = props;
-	const { text, amount } = transaction;
+	const { _id, text, amount } = transaction;
 
 	const { deleteTransaction } = useContext(GlobalContext);
 
@@ -19,12 +19,9 @@ export const TransactionItem = ({ transaction }: any) => {
 		<li className={amount < 0 ? 'minus' : 'plus'}>
 			{text}{' '}
 			<span>
-				{sign}${numberWithCommas(Math.abs(amount))}
+				{sign}€{numberWithSpaces(Math.abs(amount))}
 			</span>
-			<button
-				onClick={() => deleteTransaction(transaction._id)}
-				className="delete-btn"
-			>
+			<button onClick={() => deleteTransaction(_id)} className="delete-btn">
 				x
 			</button>
 		</li>

@@ -9,13 +9,11 @@ export const AddTransaction: React.FC = () => {
 
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
 		const newTransaction = {
 			text,
 			// parse into number
 			amount: +amount,
 		};
-
 		addTransaction(newTransaction);
 	};
 
