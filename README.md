@@ -5,7 +5,7 @@
 
 ```
 change nodemon.json file in server/nodemon.json with your mongoDB credentials,
-hange uri string in server/src/app.ts to your mongoDB connection string
+change uri string in server/src/app.ts to your mongoDB connection string
 ```
 
 ```
