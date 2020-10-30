@@ -6,8 +6,7 @@
 
 ### Mongo connection setup
 
-Add your MongoDB Atlas connection string into .env/MONGO_URI
-Or your local MongoDB connection string into .env/MONGO_DB
+Add your MongoDB Atlas connection string into .env/MONGO_URI</br>Or your local MongoDB connection string into .env/MONGO_DB
 
 ### Install Dependencies (frontend & backend)
 
