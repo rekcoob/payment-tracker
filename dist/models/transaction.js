@@ -6,7 +6,7 @@ var transactionSchema = new mongoose_1.Schema({
         type: String,
         // trim - remove whitespace from both sides
         trim: true,
-        // 2 param - Error Message
+        // 2nd param - Error Message
         required: [true, 'Please add some text'],
     },
     amount: {

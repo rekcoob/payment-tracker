@@ -11,9 +11,10 @@ export type InitialStateType = {
 	transactions: ITransaction[];
 	error: any;
 	loading: boolean;
-	// fn?: (bob: string) => void;
-	// getTransactions(): Promise<void>;
-	getTransactions(): any;
-	deleteTransaction: (id: number) => void;
-	addTransaction(transaction: ITransaction | any): void;
 };
+
+export type GlobalActionType =
+	| { type: 'GET_TRANSACTIONS'; payload: ITransaction[] }
+	| { type: 'TRANSACTION_ERROR'; payload: any }
+	| { type: 'ADD_TRANSACTION'; payload: ITransaction }
+	| { type: 'DELETE_TRANSACTION'; payload: number };

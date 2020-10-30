@@ -2,9 +2,6 @@ import { Request, Response } from 'express';
 import { ITransaction } from '../types/transaction';
 import Transaction from '../models/transaction';
 
-// import Transaction from '../models/Transaction';
-// const Transaction = require('../models/Transaction');
-
 //@ desc Get all transactions
 //@ route GET/api/transactions
 //@ access Public
