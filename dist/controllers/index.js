@@ -41,8 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTransaction = exports.addTransaction = exports.getTransactions = void 0;
 var transaction_1 = __importDefault(require("../models/transaction"));
-// import Transaction from '../models/Transaction';
-// const Transaction = require('../models/Transaction');
 //@ desc Get all transactions
 //@ route GET/api/transactions
 //@ access Public

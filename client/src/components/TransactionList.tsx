@@ -1,16 +1,35 @@
 import React, { useContext, useEffect } from 'react';
-import { GlobalContext } from '../context/GlobalState';
-
+import axios from 'axios';
+import { GlobalContext } from '../context/AppContext';
 import { TransactionItem } from './TransactionItem';
 import { ITransaction } from '../types';
+// import { getTransactions } from '../context/appActions';
 
 export const TransactionList: React.FC = () => {
-	const { transactions, getTransactions } = useContext(GlobalContext);
+	const {
+		state: { transactions },
+		dispatch,
+	} = useContext(GlobalContext);
 
 	useEffect(() => {
 		getTransactions();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	async function getTransactions() {
+		try {
+			const res = await axios.get('/api/transactions');
+			dispatch({
+				type: 'GET_TRANSACTIONS',
+				payload: res.data.data,
+			});
+		} catch (error) {
+			dispatch({
+				type: 'TRANSACTION_ERROR',
+				payload: error.response.data.error,
+			});
+		}
+	}
 
 	return (
 		<>

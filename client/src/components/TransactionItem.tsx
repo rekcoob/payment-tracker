@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+// import { deleteTransaction } from '../context/appActions';
+import axios from 'axios';
+import { GlobalContext } from '../context/AppContext';
 import { ITransaction } from '../types';
 import { numberWithSpaces } from '../utils/format';
 
@@ -10,8 +12,22 @@ type Props = {
 export const TransactionItem: React.FC<Props> = ({ transaction }) => {
 	// const { transaction } = props;
 	const { _id, text, amount } = transaction;
+	const { dispatch } = useContext(GlobalContext);
 
-	const { deleteTransaction } = useContext(GlobalContext);
+	async function deleteTransaction(_id: number) {
+		try {
+			await axios.delete(`/api/transactions/${_id}`);
+			dispatch({
+				type: 'DELETE_TRANSACTION',
+				payload: _id,
+			});
+		} catch (error) {
+			dispatch({
+				type: 'TRANSACTION_ERROR',
+				payload: error.response.data.error,
+			});
+		}
+	}
 
 	const sign = amount < 0 ? '-' : '+';
 

@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { GlobalContext } from '../context/AppContext';
 import { ITransaction } from '../types';
 import { numberWithSpaces } from '../utils/format';
 
 export const IncomeExpenses: React.FC = () => {
-	const { transactions } = useContext(GlobalContext);
+	const {
+		state: { transactions },
+	} = useContext(GlobalContext);
 
 	const amounts = transactions.map(
 		(transaction: ITransaction) => transaction.amount

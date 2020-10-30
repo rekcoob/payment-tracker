@@ -1,8 +1,0 @@
-{
-	"env": {
-		"PORT": "4000",
-		"MONGO_USER": "test",
-		"MONGO_PASSWORD": "test",
-		"MONGO_DB": "cluster0"
-	}
-}

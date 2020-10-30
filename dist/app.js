@@ -6,23 +6,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var cors_1 = __importDefault(require("cors"));
-// import dotenv from 'dotenv';
-//import morgan from 'morgan';
+require("dotenv/config");
+var morgan_1 = __importDefault(require("morgan"));
 var routes_1 = __importDefault(require("./routes"));
-// dotenv.config({ path: './config/config.env' });
+var path_1 = __importDefault(require("path"));
 var app = express_1.default();
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 5000;
 app.use(express_1.default.json());
 // use only in development
-//app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan_1.default('dev'));
+}
 app.use(cors_1.default());
 // app.use(transactionRoutes);
 app.use('/api/transactions', routes_1.default);
-var uri = "mongodb+srv://" + process.env.MONGO_USER + ":" + process.env.MONGO_PASSWORD + "@cluster0.mz0or.mongodb.net/" + process.env.MONGO_DB + "?retryWrites=true&w=majority";
+// Heroku deploy
+if (process.env.NODE_ENV === 'production') {
+    app.use(express_1.default.static(path_1.default.join(__dirname, '../client/build')));
+    app.get('*', function (req, res) {
+        return res.sendFile(path_1.default.resolve(__dirname, '../client/build', 'index.html'));
+    });
+}
 var options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose_1.default.set('useFindAndModify', false);
 mongoose_1.default
-    .connect(uri, options)
+    .connect(process.env.MONGO_URI, options)
     .then(function () {
     return app.listen(PORT, function () {
         return console.log("Server running on http://localhost:" + PORT);
