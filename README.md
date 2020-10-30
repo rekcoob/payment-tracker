@@ -1,6 +1,6 @@
 # Payment Tracker
 
-> Full-stack TypeScript App with React, Nodejs and MongoDB
+> Full-stack TypeScript App to track expenses with React, Nodejs and MongoDB
 
 ## Usage
 
